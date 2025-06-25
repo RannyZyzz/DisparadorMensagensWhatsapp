@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Image } from 'react-native';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Dimensions } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
@@ -111,6 +112,11 @@ const FirstAccessScreen: React.FC<Props> = ({ navigation }) => {
         <View style={styles.container}>
             {currentStep === 1 && (
                 <>
+                    <Image
+                        source={require('../assets/email-logo.png')}
+                        style={styles.logo}
+                        resizeMode="contain"
+                    />
                     <Text style={styles.title}>Informe seu Email</Text>
                     <TextInput
                         style={styles.input}
@@ -245,6 +251,11 @@ const styles = StyleSheet.create({
         color: '#007bff',
         fontSize: 16,
         textDecorationLine: 'underline',
+    },
+    logo: {
+        width: 150,
+        height: 150,
+        marginBottom: 20,
     },
 });
 
