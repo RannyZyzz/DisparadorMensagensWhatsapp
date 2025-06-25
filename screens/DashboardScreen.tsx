@@ -64,7 +64,7 @@ const DashboardScreen: React.FC<Props> = ({ navigation, route }) => {
 
             <WebView
                 style={styles.webview}
-                source={{ uri: '[https://n8n.rannyzyzz.com.br/webhook/html](https://n8n.rannyzyzz.com.br/webhook/html)' }} // Corrected URL format
+                source={{ uri: 'https://n8n.rannyzyzz.com.br/webhook/f0cea945-1b5c-4e26-b53f-2fdd955a11f6' }} // Corrected URL format
                 onLoadStart={() => console.log('Carregando WebView...')}
                 onLoadEnd={() => console.log('WebView carregada.')}
                 onError={(syntheticEvent) => {
