@@ -1,7 +1,7 @@
 {
   "expo": {
     "name": "DisparadorMensagensWhatsapp",
-    "slug": "DisparadorMensagensWhatsapp",
+    "slug": "disparadormensagenswhatsapp",
     "version": "1.0.0",
     "orientation": "portrait",
     "icon": "./assets/icon.png",
@@ -28,8 +28,9 @@
     },
     "extra": {
       "eas": {
-        "projectId": "4a2018e0-634d-4bfe-9a8f-4a1157d90329"
+        "projectId": "dd26f804-bf6d-49aa-809b-507cef1b4046"
       }
-    }
+    },
+    "owner": "rannyzyzz"
   }
 }
