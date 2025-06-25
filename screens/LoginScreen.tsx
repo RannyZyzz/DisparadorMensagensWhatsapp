@@ -1,4 +1,5 @@
 import React, { useState } from 'react';
+import { Image } from 'react-native';
 import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Dimensions } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { authenticateUser } from '../utils/auth';
@@ -46,7 +47,12 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
 
     return (
         <View style={styles.container}>
-            <Text style={styles.title}>Bem-vindo!</Text>
+            <Image
+                source={require('../assets/whatsapp-logo.png')}
+                style={styles.logo}
+                resizeMode="contain"
+            />
+            <Text style={styles.title}>Disparador Whatsapp</Text>
             <TextInput
                 style={styles.input}
                 placeholder="Email"
@@ -128,5 +134,10 @@ const styles = StyleSheet.create({
         color: '#007bff',
         fontSize: 16,
         textDecorationLine: 'underline',
+    },
+    logo: {
+        width: 200,
+        height: 200,
+        marginBottom: 20,
     },
 });
