@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Image } from 'react-native';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Dimensions } from 'react-native';
+import { Image, Platform } from 'react-native';
+import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Dimensions } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { authenticateUser } from '../utils/auth';
 
@@ -46,38 +46,46 @@ export const LoginScreen: React.FC<Props> = ({ navigation }) => {
     };
 
     return (
-        <View style={styles.container}>
-            <Image
-                source={require('../assets/whatsapp-logo.png')}
-                style={styles.logo}
-                resizeMode="contain"
-            />
-            <Text style={styles.title}>Disparador Whatsapp</Text>
-            <TextInput
-                style={styles.input}
-                placeholder="Email"
-                value={email}
-                onChangeText={setEmail}
-                keyboardType="email-address"
-                autoCapitalize="none"
-            />
-            <TextInput
-                style={styles.input}
-                placeholder="Senha"
-                value={password}
-                onChangeText={setPassword}
-                secureTextEntry
-            />
-            <TouchableOpacity style={styles.button} onPress={handleLogin}>
-                <Text style={styles.buttonText}>Entrar</Text>
-            </TouchableOpacity>
-            <TouchableOpacity
-                style={styles.secondaryButton}
-                onPress={() => navigation.navigate('FirstAccess')}
-            >
-                <Text style={styles.secondaryButtonText}>Primeiro Acesso / Esqueceu a Senha?</Text>
-            </TouchableOpacity>
-        </View>
+        <KeyboardAvoidingView
+            style={styles.container}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
+        >
+            <View style={styles.container}>
+                <Image
+                    source={require('../assets/whatsapp-logo.png')}
+                    style={styles.logo}
+                    resizeMode="contain"
+                />
+                <Text style={styles.title}>Disparador Whatsapp</Text>
+                <TextInput
+                    style={styles.input}
+                    placeholder="Email"
+                    placeholderTextColor="#000000"
+                    value={email}
+                    onChangeText={setEmail}
+                    keyboardType="email-address"
+                    autoCapitalize="none"
+                />
+                <TextInput
+                    style={styles.input}
+                    placeholder="Senha"
+                    placeholderTextColor="#000000"
+                    value={password}
+                    onChangeText={setPassword}
+                    secureTextEntry={true}
+                />
+                <TouchableOpacity style={styles.button} onPress={handleLogin}>
+                    <Text style={styles.buttonText}>Entrar</Text>
+                </TouchableOpacity>
+                <TouchableOpacity
+                    style={styles.secondaryButton}
+                    onPress={() => navigation.navigate('FirstAccess')}
+                >
+                    <Text style={styles.secondaryButtonText}>Primeiro Acesso / Esqueceu a Senha?</Text>
+                </TouchableOpacity>
+            </View>
+        </KeyboardAvoidingView>
     );
 };
 
@@ -103,9 +111,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 10,
         marginBottom: 15,
-        fontSize: 16,
+        fontSize: 18,
         borderColor: '#ddd',
         borderWidth: 1,
+        color: '#000',
+        fontWeight: 'bold'
     },
     button: {
         width: width * 0.85,

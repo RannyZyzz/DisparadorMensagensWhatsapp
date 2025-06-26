@@ -1,6 +1,6 @@
 import React, { useState } from 'react';
-import { Image } from 'react-native';
-import { View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Dimensions } from 'react-native';
+import { Image, Platform } from 'react-native';
+import { KeyboardAvoidingView, View, Text, TextInput, TouchableOpacity, StyleSheet, Alert, Dimensions } from 'react-native';
 import { StackNavigationProp } from '@react-navigation/stack';
 import { RouteProp } from '@react-navigation/native';
 import { saveUser, getUserByEmail } from '../utils/auth';
@@ -109,84 +109,104 @@ const FirstAccessScreen: React.FC<Props> = ({ navigation }) => {
     const { width } = Dimensions.get('window');
 
     return (
-        <View style={styles.container}>
-            {currentStep === 1 && (
-                <>
-                    <Image
-                        source={require('../assets/email-logo.png')}
-                        style={styles.logo}
-                        resizeMode="contain"
-                    />
-                    <Text style={styles.title}>Informe seu Email</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Seu email"
-                        value={email}
-                        onChangeText={setEmail}
-                        keyboardType="email-address"
-                        autoCapitalize="none"
-                    />
-                    <TouchableOpacity style={styles.button} onPress={handleSendCode}>
-                        <Text style={styles.buttonText}>Enviar Código</Text>
-                    </TouchableOpacity>
-                </>
-            )}
+        <KeyboardAvoidingView
+            style={styles.container}
+            behavior={Platform.OS === 'ios' ? 'padding' : 'height'}
+            keyboardVerticalOffset={Platform.OS === 'ios' ? 64 : 0}
+        >
+            <View style={styles.container}>
+                {currentStep === 1 && (
+                    <>
+                        <Image
+                            source={require('../assets/email-logo.png')}
+                            style={styles.logo}
+                            resizeMode="contain"
+                        />
+                        <Text style={styles.title}>Informe seu Email</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Seu email"
+                            placeholderTextColor="#000000"
+                            value={email}
+                            onChangeText={setEmail}
+                            keyboardType="email-address"
+                            autoCapitalize="none"
+                        />
+                        <TouchableOpacity style={styles.button} onPress={handleSendCode}>
+                            <Text style={styles.buttonText}>Enviar Código</Text>
+                        </TouchableOpacity>
+                    </>
+                )}
 
-            {currentStep === 2 && (
-                <>
-                    <Text style={styles.title}>Validar Código</Text>
-                    <Text style={styles.subtitle}>
-                        Um código foi enviado (simulado) para {email}. Por favor, insira-o abaixo.
-                    </Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Código"
-                        value={code}
-                        onChangeText={setCode}
-                        keyboardType="numeric"
-                        maxLength={4}
-                    />
-                    <TouchableOpacity style={styles.button} onPress={handleValidateCode}>
-                        <Text style={styles.buttonText}>Validar Código</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.secondaryButton}
-                        onPress={() => setCurrentStep(1)}
-                    >
-                        <Text style={styles.secondaryButtonText}>Voltar</Text>
-                    </TouchableOpacity>
-                </>
-            )}
+                {currentStep === 2 && (
+                    <>
+                        <Image
+                            source={require('../assets/cadeado-logo.png')}
+                            style={styles.logo}
+                            resizeMode="contain"
+                        />
+                        <Text style={styles.title}>Validar Código</Text>
+                        <Text style={styles.subtitle}>
+                            Um código foi enviado (simulado) para {email}. Por favor, insira-o abaixo.
+                        </Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Código"
+                            placeholderTextColor="#000000"
+                            value={code}
+                            onChangeText={setCode}
+                            keyboardType="numeric"
+                            maxLength={4}
+                        />
+                        <TouchableOpacity style={styles.button} onPress={handleValidateCode}>
+                            <Text style={styles.buttonText}>Validar Código</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.secondaryButton}
+                            onPress={() => setCurrentStep(1)}
+                        >
+                            <Text style={styles.secondaryButtonText}>Voltar</Text>
+                        </TouchableOpacity>
+                    </>
+                )}
 
-            {currentStep === 3 && (
-                <>
-                    <Text style={styles.title}>Definir Nova Senha</Text>
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Nova Senha"
-                        value={newPassword}
-                        onChangeText={setNewPassword}
-                        secureTextEntry
-                    />
-                    <TextInput
-                        style={styles.input}
-                        placeholder="Confirmar Nova Senha"
-                        value={confirmPassword}
-                        onChangeText={setConfirmPassword}
-                        secureTextEntry
-                    />
-                    <TouchableOpacity style={styles.button} onPress={handleSetPassword}>
-                        <Text style={styles.buttonText}>Definir Senha</Text>
-                    </TouchableOpacity>
-                    <TouchableOpacity
-                        style={styles.secondaryButton}
-                        onPress={() => setCurrentStep(1)}
-                    >
-                        <Text style={styles.secondaryButtonText}>Cancelar</Text>
-                    </TouchableOpacity>
-                </>
-            )}
-        </View>
+                {currentStep === 3 && (
+                    <>
+                        <Image
+                            source={require('../assets/password-logo.png')}
+                            style={styles.logo}
+                            resizeMode="contain"
+                        />
+                        <Text style={styles.title}>Definir Nova Senha</Text>
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Nova Senha"
+                            placeholderTextColor="#000000"
+                            value={newPassword}
+                            onChangeText={setNewPassword}
+                            secureTextEntry={true}
+                        />
+                        <TextInput
+                            style={styles.input}
+                            placeholder="Confirmar Nova Senha"
+                            placeholderTextColor="#000000"
+                            value={confirmPassword}
+                            onChangeText={setConfirmPassword}
+                            secureTextEntry={true}
+                        />
+                        <TouchableOpacity style={styles.button} onPress={handleSetPassword}>
+                            <Text style={styles.buttonText}>Definir Senha</Text>
+                        </TouchableOpacity>
+                        <TouchableOpacity
+                            style={styles.secondaryButton}
+                            onPress={() => setCurrentStep(1)}
+                        >
+                            <Text style={styles.secondaryButtonText}>Cancelar</Text>
+                        </TouchableOpacity>
+                    </>
+                )}
+            </View>
+        </KeyboardAvoidingView>
     );
 };
 
@@ -220,9 +240,11 @@ const styles = StyleSheet.create({
         backgroundColor: '#fff',
         borderRadius: 10,
         marginBottom: 15,
-        fontSize: 16,
+        fontSize: 18,
         borderColor: '#ddd',
         borderWidth: 1,
+        color: '#000',
+        fontWeight: 'bold'
     },
     button: {
         width: width * 0.85,
