@@ -1,5 +1,5 @@
  # Disparador de Mensagens Whatsapp
-Este é um aplicativo móvel construído com Expo e React Native, utilizando TypeScript, que demonstra um fluxo de autenticação completo, incluindo login, primeiro acesso (registro), recuperação de senha e um painel com uma WebView que efetua o disparo das mensagens.
+Este é um aplicativo móvel construído com Expo e React Native, utilizando TypeScript como trabalho para a faculdade Estácio de Sá para matéria de dispositivos Android, que demonstra um fluxo de autenticação completo, incluindo login, primeiro acesso (registro), recuperação de senha e um painel com uma WebView que efetua o disparo das mensagens.
 
 ### Funcionalidades
 * Tela de Login: Permite que usuários existentes façam login com seu email e senha.
