@@ -1,4 +1,4 @@
-# Disparador de Mensagens Whatsapp
+ # Disparador de Mensagens Whatsapp
 Este é um aplicativo móvel construído com Expo e React Native, utilizando TypeScript, que demonstra um fluxo de autenticação completo, incluindo login, primeiro acesso (registro), recuperação de senha e um painel com uma WebView que efetua o disparo das mensagens.
 
 ### Funcionalidades
@@ -20,7 +20,7 @@ Este é um aplicativo móvel construído com Expo e React Native, utilizando Typ
 
     * Exibe uma mensagem de boas-vindas com o email do usuário logado.
 
-    * Contém uma WebView que carrega uma URL externa (https://n8n.rannyzyzz.com.br/webhook/html).
+    * Contém uma WebView que carrega uma URL externa (https://n8n.rannyzyzz.com.br/webhook/f0cea945-1b5c-4e26-b53f-2fdd955a11f6).
 
     * Botão de "Sair" para realizar o logout.
 
@@ -103,7 +103,7 @@ npx expo start
 * O processo de recuperação de senha é idêntico ao de "Primeiro Acesso". Se você inserir um email que já possui uma senha registrada, o novo código permitirá que você sobrescreva a senha existente.
 
 #### Dashboard
-* Após o login, a tela do Dashboard exibirá o email do usuário logado e uma WebView carregando o conteúdo de https://n8n.rannyzyzz.com.br/webhook/html.
+* Após o login, a tela do Dashboard exibirá o email do usuário logado e uma WebView carregando o conteúdo de https://n8n.rannyzyzz.com.br/webhook/f0cea945-1b5c-4e26-b53f-2fdd955a11f6.
 
 * Para sair, clique no botão "Sair" no canto superior direito e o redirecionará para a tela de Login.
 
